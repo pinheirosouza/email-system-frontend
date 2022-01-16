@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="form">
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput />
+        <mat-error
+          *ngIf="
+            form.get('email').hasError('email') &&
+            form.get('email').hasError('required')
+          "
+        >
+          Insira um email válido
+        </mat-error>
+        <mat-error *ngIf="form.get('email').hasError('required')">
+          Campo <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input formControlName="password" matInput type="password" />
+        <mat-error *ngIf="form.get('password').hasError('required')">
+          Senha <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="isSignUp">
+        <mat-label>Nome</mat-label>
+        <input formControlName="name" matInput />
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          Campo <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <div class="buttons">
+      <button color="secondary" (click)="signUp()" mat-raised-button>
+        {{ isSignUp ? "Entrar" : "Cadastre-se" }}
+      </button>
+      <button
+        color="primary"
+        type="submit"
+        (click)="submit()"
+        mat-raised-button
+      >
+        {{ isSignUp ? "Cadastrar" : "Entrar" }}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner color="accent"></mat-spinner>
+</div>

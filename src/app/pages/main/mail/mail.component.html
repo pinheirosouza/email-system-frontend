@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-icon-button [routerLink]="'/inbox'">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>{{ mail?.subject }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="deleteMail()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-toolbar>
+<div>
+  <p>
+    Enviado por: <b>{{ mail?.sentBy.email }}</b> para
+    <b>{{ mail?.receivedBy.email }}</b>
+  </p>
+  <br />
+  <h1>{{ mail?.subject }}</h1>
+  <p>{{ mail?.message }}</p>
+</div>

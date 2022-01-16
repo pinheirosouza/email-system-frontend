@@ -1,0 +1,13 @@
+mat-toolbar {
+  position: fixed;
+  top: 0px;
+  left: 220px;
+  width: calc(100% - 220px);
+}
+div {
+  margin-top: 54px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

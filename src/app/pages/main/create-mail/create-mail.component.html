@@ -1,0 +1,27 @@
+<form [formGroup]="form" (submit)="handleSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Para</mat-label>
+    <input
+      matInput
+      formControlName="receiverEmail"
+      placeholder="Ex. pedro@mail.com"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="subject" placeholder="Ex. Pizza" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Deixe uma mensagem</mat-label>
+    <textarea
+      matInput
+      formControlName="message"
+      placeholder="Ex. It makes me feel..."
+    ></textarea>
+  </mat-form-field>
+  <button color="primary" mat-raised-button>Entrar</button>
+</form>
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner color="accent"></mat-spinner>
+</div>

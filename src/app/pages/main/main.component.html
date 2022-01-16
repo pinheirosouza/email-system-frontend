@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-action-list>
+      <button mat-list-item [routerLink]="'/inbox'">Caixa de Entrada</button>
+      <button mat-list-item [routerLink]="'/outbox'">Enviados</button>
+      <button mat-list-item [routerLink]="'/trash'">Lixeira</button>
+      <button mat-list-item (click)="logout()">Sair</button>
+    </mat-action-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a home icon"
+      matTooltip="Novo email"
+      [matTooltipPosition]="'before'"
+      [routerLink]="'/create-mail'"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-sidenav-content>
+</mat-sidenav-container>

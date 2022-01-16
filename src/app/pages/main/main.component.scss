@@ -1,0 +1,21 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 220px;
+  padding: 10px 15px;
+}
+
+mat-sidenav-content {
+  padding: 30px;
+  button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
