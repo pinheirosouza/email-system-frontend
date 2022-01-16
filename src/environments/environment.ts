@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BACKED_URL: 'http://localhost:3000',
+  // BACKED_URL: 'http://localhost:3000',
+  BACKED_URL: 'https://email-system-api-stg.herokuapp.com',
 };
 
 /*
