@@ -15,6 +15,6 @@
     mat-row
     *matRowDef="let row; columns: displayedColumns"
     (click)="openMail(row._id)"
-    [ngClass]="{ read: row.read }"
+    [ngClass]="{ read: true }"
   ></tr>
 </table>

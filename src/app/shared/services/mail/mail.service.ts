@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MailDTO } from './dtos/mail.dto';
 import { ReadMailDTO } from './dtos/read-mail.dto';
+import { io } from 'socket.io-client';
+import { AuthService } from '../auth/auth.service';
 
 const URL = `${environment.BACKED_URL}/auth/mail`;
 
@@ -10,7 +13,20 @@ const URL = `${environment.BACKED_URL}/auth/mail`;
   providedIn: 'root',
 })
 export class MailService {
-  constructor(private http: HttpClient) {}
+  public socket = io(environment.BACKED_URL);
+  public message$: BehaviorSubject<string> = new BehaviorSubject('');
+
+  constructor(private http: HttpClient, private authService: AuthService) {}
+
+  public getNewMailsJoin = () => {
+    console.log('opa');
+    this.socket.emit('join', this.authService.getLoggedUserId());
+    this.socket.on('mail', (message) => {
+      this.message$.next(message);
+    });
+
+    return this.message$.asObservable();
+  };
 
   getMails(query) {
     return this.http.get(`${URL}/${query}`);
